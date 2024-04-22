@@ -7,8 +7,7 @@ use Kubinyete\Edi\Registry\Field\Date;
 use Kubinyete\Edi\Registry\Field\Text;
 use Kubinyete\Edi\Registry\Field\Number;
 use Kubinyete\Edi\Registry\Field\Numeric;
-use Kubinyete\Edi\Getnet\Registry\Contract\HasMany;
-use Kubinyete\Edi\Getnet\Registry\Contract\HasRelationship;
+use Kubinyete\Edi\Getnet\Registry\Contract\TransactionalSummaryInterface;
 
 /**
  * REGISTRO TIPO 1 – DETALHE DO RV
@@ -16,7 +15,7 @@ use Kubinyete\Edi\Getnet\Registry\Contract\HasRelationship;
  * - Movimento de Vendas – PF e RA;
  * - Movimento Financeiro – PG, AC e PR.
  */
-final class TransactionalSummary extends Registry
+final class TransactionalSummary extends Registry implements TransactionalSummaryInterface
 {
     #[Number(1)]
     public int $registryType;
@@ -92,4 +91,186 @@ final class TransactionalSummary extends Registry
     public string $receivableUnitId;
     #[Text(42)]
     public string $_padding;
+
+    //
+
+    function getRegistryType(): int
+    {
+        return $this->registryType;
+    }
+
+    function getEstablishmentCode(): string
+    {
+        return $this->establishmentCode;
+    }
+
+    function getProductCode(): string
+    {
+        return $this->productCode;
+    }
+
+    function getCaptureMethod(): string
+    {
+        return $this->captureMethod;
+    }
+
+    function getSalesSummaryNumber(): string
+    {
+        return $this->salesSummaryNumber;
+    }
+
+    function getSalesSummaryDate(): DateTimeInterface
+    {
+        return $this->salesSummaryDate;
+    }
+
+    function getSalesSummaryPaymentDate(): DateTimeInterface
+    {
+        return $this->salesSummaryPaymentDate;
+    }
+
+    function getBankCode(): string
+    {
+        return $this->bankCode;
+    }
+
+    function getBankAgency(): string
+    {
+        return $this->bankAgency;
+    }
+
+    function getCheckingAccount(): string
+    {
+        return $this->checkingAccount;
+    }
+
+    function getSalesAcceptedQuantity(): int
+    {
+        return $this->salesAcceptedQuantity;
+    }
+
+    function getSalesRejectedQuantity(): int
+    {
+        return $this->salesRejectedQuantity;
+    }
+
+    function getGrossAmount(): string
+    {
+        return $this->grossAmount;
+    }
+
+    function getAmount(): string
+    {
+        return $this->amount;
+    }
+
+    function getFareAmount(): string
+    {
+        return $this->fareAmount;
+    }
+
+    function getDiscountRateAmount(): string
+    {
+        return $this->discountRateAmount;
+    }
+
+    function getTotalRejectedAmount(): string
+    {
+        return $this->totalRejectedAmount;
+    }
+
+    function getTotalCreditAmount(): string
+    {
+        return $this->totalCreditAmount;
+    }
+
+    function getChargesAmount(): string
+    {
+        return $this->chargesAmount;
+    }
+
+    function getPaymentTypeIndicator(): string
+    {
+        return $this->paymentTypeIndicator;
+    }
+
+    function getSalesSummaryInstallment(): int
+    {
+        return $this->salesSummaryInstallment;
+    }
+
+    function getSalesSummaryInstallments(): int
+    {
+        return $this->salesSummaryInstallments;
+    }
+
+    function getEstablishmentCodeOrigin(): string
+    {
+        return $this->establishmentCodeOrigin;
+    }
+
+    function getAnticipationOperationNumber(): string
+    {
+        return $this->anticipationOperationNumber;
+    }
+
+    function getDueDateOriginal(): DateTimeInterface
+    {
+        return $this->dueDateOriginal;
+    }
+
+    function getOperationCost(): string
+    {
+        return $this->operationCost;
+    }
+
+    function getSalesSummaryAnticipationAmount(): string
+    {
+        return $this->salesSummaryAnticipationAmount;
+    }
+
+    function getChargeControlNumber(): string
+    {
+        return $this->chargeControlNumber;
+    }
+
+    function getChargeAmount(): string
+    {
+        return $this->chargeAmount;
+    }
+
+    function getCompensationId(): string
+    {
+        return $this->compensationId;
+    }
+
+    function getCurrencyCode(): int
+    {
+        return $this->currencyCode;
+    }
+
+    function getChargeWriteOffIdentifier(): string
+    {
+        return $this->chargeWriteOffIdentifier;
+    }
+
+    function getTransactionAdjustmentSignal(): string
+    {
+        return $this->transactionAdjustmentSignal;
+    }
+
+    function getAccountTypeForPayment(): string
+    {
+        return $this->accountTypeForPayment;
+    }
+
+    function getAccountNumberForPayment(): string
+    {
+        return $this->accountNumberForPayment;
+    }
+
+    function getReceivableUnitId(): string
+    {
+        return $this->receivableUnitId;
+    }
 }

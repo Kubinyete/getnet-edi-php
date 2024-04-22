@@ -8,6 +8,7 @@ use Kubinyete\Edi\Registry\Field\Text;
 use Kubinyete\Edi\Registry\Field\Field;
 use Kubinyete\Edi\Registry\Field\Number;
 use Kubinyete\Edi\Registry\Field\Numeric;
+use Kubinyete\Edi\Getnet\Registry\Contract\TransactionalAnalyticInterface;
 
 /**
  * REGISTRO TIPO 2 – DETALHE DO CV
@@ -16,7 +17,7 @@ use Kubinyete\Edi\Registry\Field\Numeric;
  * @small: Para todo registro tipo 2, existe um registro tipo 1.
  * @see: TransactionalSummary
  */
-final class TransactionalAnalytic extends Registry
+final class TransactionalAnalytic extends Registry implements TransactionalAnalyticInterface
 {
     #[Number(1)]
     public int $registryType;
@@ -74,4 +75,141 @@ final class TransactionalAnalytic extends Registry
     public string $metadata2;
     #[Text(41)]
     public string $_padding;
+
+    //
+
+    function getRegistryType(): int
+    {
+        return $this->registryType;
+    }
+
+    function getEstablishmentCode(): string
+    {
+        return $this->establishmentCode;
+    }
+
+    function getSalesSummaryNumber(): string
+    {
+        return $this->salesSummaryNumber;
+    }
+
+    function getAcquirerNsu(): string
+    {
+        return $this->acquirerNsu;
+    }
+
+    function getTransactionDate(): DateTimeInterface
+    {
+        return $this->transactionDate;
+    }
+
+    function getCardNumber(): string
+    {
+        return $this->cardNumber;
+    }
+
+    function getTransactionAmount(): string
+    {
+        return $this->transactionAmount;
+    }
+
+    function getWithdrawalAmount(): string
+    {
+        return $this->withdrawalAmount;
+    }
+
+    function getBoardingTaxAmount(): string
+    {
+        return $this->boardingTaxAmount;
+    }
+
+    function getInstallments(): int
+    {
+        return $this->installments;
+    }
+
+    function getInstallment(): int
+    {
+        return $this->installment;
+    }
+
+    function getInstallmentAmount(): string
+    {
+        return $this->installmentAmount;
+    }
+
+    function getPaymentDate(): DateTimeInterface
+    {
+        return $this->paymentDate;
+    }
+
+    function getAuthorizationCode(): string
+    {
+        return $this->authorizationCode;
+    }
+
+    function getCaptureMethod(): string
+    {
+        return $this->captureMethod;
+    }
+
+    function getTransactionStatus(): string
+    {
+        return $this->transactionStatus;
+    }
+
+    function getEstablishmentCodeOrigin(): string
+    {
+        return $this->establishmentCodeOrigin;
+    }
+
+    function getTerminalCode(): string
+    {
+        return $this->terminalCode;
+    }
+
+    function getCurrencyCode(): int
+    {
+        return $this->currencyCode;
+    }
+
+    function getCardIssuerOrigin(): string
+    {
+        return $this->cardIssuerOrigin;
+    }
+
+    function getTransactionAdjustmentSignal(): string
+    {
+        return $this->transactionAdjustmentSignal;
+    }
+
+    function getDigitalWallet(): string
+    {
+        return $this->digitalWallet;
+    }
+
+    function getSaleComissionAmount(): string
+    {
+        return $this->saleComissionAmount;
+    }
+
+    function getMetadataContentType(): string
+    {
+        return $this->metadataContentType;
+    }
+
+    function getMetadata(): string
+    {
+        return $this->metadata;
+    }
+
+    function getMetadata2ContentType(): string
+    {
+        return $this->metadata2ContentType;
+    }
+
+    function getMetadata2(): string
+    {
+        return $this->metadata2;
+    }
 }

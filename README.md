@@ -85,22 +85,132 @@ change from affecting your application immediately (Ex: Name changes, value type
 If there are any changes that are not retrocompatible, a new type or associated interface will be used for that functionality.
 
 | Type   | Version     | Registry type       | Interface
-| ------ | ----------- | ----------- | ---------
-| 0      | >=10.1      | Kubinyete\Edi\Getnet\Registry\Header | Kubinyete\Edi\Getnet\Registry\Contract\HeaderInterface
-|        |             |                                      | ╠ getFileCreationDate(): DateTimeInterface
-|        |             |                                      | ╠ getMovementReferenceDate(): DateTimeInterface
-|        |             |                                      | ╠ getFileVersion(): string
-|        |             |                                      | ╠ getEstablishmentCode(): string
-|        |             |                                      | ╠ getAcquirerDocument(): string
-|        |             |                                      | ╠ getAcquirerName(): string
-|        |             |                                      | ╠ getSequenceNumber(): int
-|        |             |                                      | ╠ getAcquirerCode(): string
-|        |             |                                      | ╚ getLayoutVersion(): string
-| 1      | >=10.1      | Kubinyete\Edi\Getnet\Registry\TransactionalSummary |
-| 2      | >=10.1      | Kubinyete\Edi\Getnet\Registry\TransactionalAnalytic |
-| 3      | >=10.1      | Kubinyete\Edi\Getnet\Registry\FinantialAdjustment | Kubinyete\Edi\Getnet\Registry\Contract\FinantialAdjustmentInterface
+| ------ | ----------- | ------------------- | ---------
+| 0      | >=10.1      | Kubinyete\Edi\Getnet\Registry\Header                | `Kubinyete\Edi\Getnet\Registry\Contract\HeaderInterface`
+| 1      | >=10.1      | Kubinyete\Edi\Getnet\Registry\TransactionalSummary  | `Kubinyete\Edi\Getnet\Registry\Contract\TransactionalSummaryInterface`
+| 2      | >=10.1      | Kubinyete\Edi\Getnet\Registry\TransactionalAnalytic | `Kubinyete\Edi\Getnet\Registry\Contract\TransactionalAnalyticInterface`
+| 3      | >=10.1      | Kubinyete\Edi\Getnet\Registry\FinantialAdjustment   | `Kubinyete\Edi\Getnet\Registry\Contract\FinantialAdjustmentInterface`
 | 4      | -           | - |
-| 5      | >=10.1      | Kubinyete\Edi\Getnet\Registry\FinantialSummary |
-| 6      | >=10.1      | Kubinyete\Edi\Getnet\Registry\FinantialDetail |
-| 9      | >=10.1      | Kubinyete\Edi\Getnet\Registry\Trailer | Kubinyete\Edi\Getnet\Registry\Contract\TrailerInterface
-|        |             |                                       | ╚ getRegistryQuantity(): int
+| 5      | >=10.1      | Kubinyete\Edi\Getnet\Registry\FinantialSummary      |
+| 6      | >=10.1      | Kubinyete\Edi\Getnet\Registry\FinantialDetail       |
+| 9      | >=10.1      | Kubinyete\Edi\Getnet\Registry\Trailer               | `Kubinyete\Edi\Getnet\Registry\Contract\TrailerInterface`
+
+### Registry types
+
+| Functionality interface                                | Signature
+| ------------------------------------------------------ | ------
+| HeaderInterface | `getFileCreationDate(): DateTimeInterface`
+| HeaderInterface | `getMovementReferenceDate(): DateTimeInterface`
+| HeaderInterface | `getFileVersion(): string`
+| HeaderInterface | `getEstablishmentCode(): string`
+| HeaderInterface | `getAcquirerDocument(): string`
+| HeaderInterface | `getAcquirerName(): string`
+| HeaderInterface | `getSequenceNumber(): int`
+| HeaderInterface | `getAcquirerCode(): string`
+| HeaderInterface | `getLayoutVersion(): string`
+
+---
+
+| Functionality interface                                 | Signature                                        
+| ------------------------------------------------------  | --------------------------------------------- 
+| TrailerInterface | `getRegistryQuantity(): int`                    
+
+---
+
+| Functionality interface                                 | Signature                                        
+| ------------------------------------------------------  | --------------------------------------------- 
+| FinantialAdjustmentInterface | `getRegistryType(): int`
+| FinantialAdjustmentInterface | `getEstablishmentCode(): string`
+| FinantialAdjustmentInterface | `getSalesSummaryNumber(): string`
+| FinantialAdjustmentInterface | `getSalesSummaryDate(): DateTimeInterface`
+| FinantialAdjustmentInterface | `getSalesSummaryPaymentDate(): DateTimeInterface`
+| FinantialAdjustmentInterface | `getAdjustmentId(): string`
+| FinantialAdjustmentInterface | `getWhiteSpace(): string`
+| FinantialAdjustmentInterface | `getAdjustmentSignal(): string`
+| FinantialAdjustmentInterface | `getAdjustmentAmount(): string`
+| FinantialAdjustmentInterface | `getAdjustmentReasonCode(): string`
+| FinantialAdjustmentInterface | `getLetterDate(): DateTimeInterface`
+| FinantialAdjustmentInterface | `getCardNumber(): string`
+| FinantialAdjustmentInterface | `getSalesSummaryNumberOriginal(): string`
+| FinantialAdjustmentInterface | `getAcquirerNsu(): string`
+| FinantialAdjustmentInterface | `getTransactionDateOriginal(): DateTimeInterface`
+| FinantialAdjustmentInterface | `getPaymentTypeIndicator(): string`
+| FinantialAdjustmentInterface | `getTerminalCodeOriginal(): string`
+| FinantialAdjustmentInterface | `getPaymentDateOriginal(): DateTimeInterface`
+| FinantialAdjustmentInterface | `getCurrencyCode(): int`
+| FinantialAdjustmentInterface | `getSaleComissionAmount(): string`
+| FinantialAdjustmentInterface | `getMetadataContentType(): string`
+| FinantialAdjustmentInterface | `getMetadata(): string`
+
+---
+
+| Functionality interface                                 | Signature                                        
+| ------------------------------------------------------  | --------------------------------------------- 
+| TransactionalSummaryInterface | `getRegistryType(): int`
+| TransactionalSummaryInterface | `getEstablishmentCode(): string`
+| TransactionalSummaryInterface | `getProductCode(): string`
+| TransactionalSummaryInterface | `getCaptureSignature(): string`
+| TransactionalSummaryInterface | `getSalesSummaryNumber(): string`
+| TransactionalSummaryInterface | `getSalesSummaryDate(): DateTimeInterface`
+| TransactionalSummaryInterface | `getSalesSummaryPaymentDate(): DateTimeInterface`
+| TransactionalSummaryInterface | `getBankCode(): string`
+| TransactionalSummaryInterface | `getBankAgency(): string`
+| TransactionalSummaryInterface | `getCheckingAccount(): string`
+| TransactionalSummaryInterface | `getSalesAcceptedQuantity(): int`
+| TransactionalSummaryInterface | `getSalesRejectedQuantity(): int`
+| TransactionalSummaryInterface | `getGrossAmount(): string`
+| TransactionalSummaryInterface | `getAmount(): string`
+| TransactionalSummaryInterface | `getFareAmount(): string`
+| TransactionalSummaryInterface | `getDiscountRateAmount(): string`
+| TransactionalSummaryInterface | `getTotalRejectedAmount(): string`
+| TransactionalSummaryInterface | `getTotalCreditAmount(): string`
+| TransactionalSummaryInterface | `getChargesAmount(): string`
+| TransactionalSummaryInterface | `getPaymentTypeIndicator(): string`
+| TransactionalSummaryInterface | `getSalesSummaryInstallment(): int`
+| TransactionalSummaryInterface | `getSalesSummaryInstallments(): int`
+| TransactionalSummaryInterface | `getEstablishmentCodeOrigin(): string`
+| TransactionalSummaryInterface | `getAnticipationOperationNumber(): string`
+| TransactionalSummaryInterface | `getDueDateOriginal(): DateTimeInterface`
+| TransactionalSummaryInterface | `getOperationCost(): string`
+| TransactionalSummaryInterface | `getSalesSummaryAnticipationAmount(): string`
+| TransactionalSummaryInterface | `getChargeControlNumber(): string`
+| TransactionalSummaryInterface | `getChargeAmount(): string`
+| TransactionalSummaryInterface | `getCompensationId(): string`
+| TransactionalSummaryInterface | `getCurrencyCode(): int`
+| TransactionalSummaryInterface | `getChargeWriteOffIdentifier(): string`
+| TransactionalSummaryInterface | `getTransactionAdjustmentSignal(): string`
+| TransactionalSummaryInterface | `getAccountTypeForPayment(): string`
+| TransactionalSummaryInterface | `getAccountNumberForPayment(): string`
+| TransactionalSummaryInterface | `getReceivableUnitId(): string`
+
+---
+
+| Functionality interface                                 | Signature                                        
+| ------------------------------------------------------  | --------------------------------------------- 
+| TransactionalAnalyticInterface | `getRegistryType(): int`
+| TransactionalAnalyticInterface | `getEstablishmentCode(): string`
+| TransactionalAnalyticInterface | `getSalesSummaryNumber(): string`
+| TransactionalAnalyticInterface | `getAcquirerNsu(): string`
+| TransactionalAnalyticInterface | `getTransactionDate(): DateTimeInterface`
+| TransactionalAnalyticInterface | `getCardNumber(): string`
+| TransactionalAnalyticInterface | `getTransactionAmount(): string`
+| TransactionalAnalyticInterface | `getWithdrawalAmount(): string`
+| TransactionalAnalyticInterface | `getBoardingTaxAmount(): string`
+| TransactionalAnalyticInterface | `getInstallments(): int`
+| TransactionalAnalyticInterface | `getInstallment(): int`
+| TransactionalAnalyticInterface | `getInstallmentAmount(): string`
+| TransactionalAnalyticInterface | `getPaymentDate(): DateTimeInterface`
+| TransactionalAnalyticInterface | `getAuthorizationCode(): string`
+| TransactionalAnalyticInterface | `getCaptureMethod(): string`
+| TransactionalAnalyticInterface | `getTransactionStatus(): string`
+| TransactionalAnalyticInterface | `getEstablishmentCodeOrigin(): string`
+| TransactionalAnalyticInterface | `getTerminalCode(): string`
+| TransactionalAnalyticInterface | `getCurrencyCode(): int`
+| TransactionalAnalyticInterface | `getCardIssuerOrigin(): string`
+| TransactionalAnalyticInterface | `getTransactionAdjustmentSignal(): string`
+| TransactionalAnalyticInterface | `getDigitalWallet(): string`
+| TransactionalAnalyticInterface | `getSaleComissionAmount(): string`
+| TransactionalAnalyticInterface | `getMetadataContentType(): string`
+| TransactionalAnalyticInterface | `getMetadata(): string`
+| TransactionalAnalyticInterface | `getMetadata2ContentType(): string`
+| TransactionalAnalyticInterface | `getMetadata2(): string`
