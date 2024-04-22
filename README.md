@@ -86,14 +86,14 @@ If there are any changes that are not retrocompatible, a new type or associated 
 
 | Type   | Version     | Registry type       | Interface
 | ------ | ----------- | ------------------- | ---------
-| 0      | >=10.1      | Kubinyete\Edi\Getnet\Registry\Header                | `Kubinyete\Edi\Getnet\Registry\Contract\HeaderInterface`
-| 1      | >=10.1      | Kubinyete\Edi\Getnet\Registry\TransactionalSummary  | `Kubinyete\Edi\Getnet\Registry\Contract\TransactionalSummaryInterface`
-| 2      | >=10.1      | Kubinyete\Edi\Getnet\Registry\TransactionalAnalytic | `Kubinyete\Edi\Getnet\Registry\Contract\TransactionalAnalyticInterface`
-| 3      | >=10.1      | Kubinyete\Edi\Getnet\Registry\FinantialAdjustment   | `Kubinyete\Edi\Getnet\Registry\Contract\FinantialAdjustmentInterface`
-| 4      | -           | - |
-| 5      | >=10.1      | Kubinyete\Edi\Getnet\Registry\FinantialSummary      |
-| 6      | >=10.1      | Kubinyete\Edi\Getnet\Registry\FinantialDetail       |
-| 9      | >=10.1      | Kubinyete\Edi\Getnet\Registry\Trailer               | `Kubinyete\Edi\Getnet\Registry\Contract\TrailerInterface`
+| 0      | >=10.1      | Kubinyete\Edi\Getnet\Registry\Header                | HeaderInterface
+| 1      | >=10.1      | Kubinyete\Edi\Getnet\Registry\TransactionalSummary  | TransactionalSummaryInterface
+| 2      | >=10.1      | Kubinyete\Edi\Getnet\Registry\TransactionalAnalytic | TransactionalAnalyticInterface
+| 3      | >=10.1      | Kubinyete\Edi\Getnet\Registry\FinantialAdjustment   | FinantialAdjustmentInterface
+| 4      | -           | -                                                   | -
+| 5      | >=10.1      | Kubinyete\Edi\Getnet\Registry\FinantialSummary      | -
+| 6      | >=10.1      | Kubinyete\Edi\Getnet\Registry\FinantialDetail       | -
+| 9      | >=10.1      | Kubinyete\Edi\Getnet\Registry\Trailer               | TrailerInterface
 
 ### Registry types
 
