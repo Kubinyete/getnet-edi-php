@@ -6,13 +6,14 @@ use DateTimeInterface;
 use Kubinyete\Edi\Registry\Field\Date;
 use Kubinyete\Edi\Registry\Field\Text;
 use Kubinyete\Edi\Registry\Field\Number;
+use Kubinyete\Edi\Getnet\Registry\Contract\HeaderInterface;
 
 /**
  * REGISTRO TIPO 0 – HEADER DE ARQUIVO
  * Apresenta informação referente ao conteúdo do arquivo – data do movimento das transações incluídas no arquivo e número
  * sequencial.
  */
-final class Header extends Registry
+final class Header extends Registry implements HeaderInterface
 {
     /**
      * Tipo de Registro
@@ -26,7 +27,7 @@ final class Header extends Registry
      * Data de criação do arquivo
      * Hora de criação do arquivo
      *
-     * @var string
+     * @var DateTimeInterface
      */
     #[Date(14, 'dmYHis')]
     public DateTimeInterface $fileCreationDate;
@@ -34,7 +35,7 @@ final class Header extends Registry
     /**
      * Hora de criação do arquivo
      *
-     * @var string
+     * @var DateTimeInterface
      */
     #[Date(8, '!dmY')]
     public DateTimeInterface $movementReferenceDate;
@@ -102,4 +103,51 @@ final class Header extends Registry
      */
     #[Text(284)]
     public string $_padding;
+
+    //
+
+    public function getFileCreationDate(): DateTimeInterface
+    {
+        return $this->fileCreationDate;
+    }
+
+    public function getMovementReferenceDate(): DateTimeInterface
+    {
+        return $this->movementReferenceDate;
+    }
+
+    public function getFileVersion(): string
+    {
+        return $this->fileVersion;
+    }
+
+    public function getEstablishmentCode(): string
+    {
+        return $this->establishmentCode;
+    }
+
+    public function getAcquirerDocument(): string
+    {
+        return $this->acquirerDocument;
+    }
+
+    public function getAcquirerName(): string
+    {
+        return $this->acquirerName;
+    }
+
+    public function getSequenceNumber(): int
+    {
+        return $this->sequenceNumber;
+    }
+
+    public function getAcquirerCode(): string
+    {
+        return $this->acquirerCode;
+    }
+
+    public function getLayoutVersion(): string
+    {
+        return $this->layoutVersion;
+    }
 }

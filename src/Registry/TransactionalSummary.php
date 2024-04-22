@@ -7,6 +7,8 @@ use Kubinyete\Edi\Registry\Field\Date;
 use Kubinyete\Edi\Registry\Field\Text;
 use Kubinyete\Edi\Registry\Field\Number;
 use Kubinyete\Edi\Registry\Field\Numeric;
+use Kubinyete\Edi\Getnet\Registry\Contract\HasMany;
+use Kubinyete\Edi\Getnet\Registry\Contract\HasRelationship;
 
 /**
  * REGISTRO TIPO 1 – DETALHE DO RV

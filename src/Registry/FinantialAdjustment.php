@@ -7,23 +7,24 @@ use Kubinyete\Edi\Registry\Field\Date;
 use Kubinyete\Edi\Registry\Field\Text;
 use Kubinyete\Edi\Registry\Field\Number;
 use Kubinyete\Edi\Registry\Field\Numeric;
+use Kubinyete\Edi\Getnet\Registry\Contract\FinantialAdjustmentInterface;
 
 /**
  * REGISTRO TIPO 3 – AJUSTES
  * Contém as informações de ajustes a crédito ou a débito, chargebacks, cancelamentos e aluguel de POS.
  */
-final class FinantialAdjustment extends Registry
+final class FinantialAdjustment extends Registry implements FinantialAdjustmentInterface
 {
     #[Number(1)]
     public int $registryType;
     #[Text(15)]
     public string $establishmentCode;
     #[Text(9)]
-    public string $saleSummaryNumber;
+    public string $salesSummaryNumber;
     #[Date(8, '!dmY')]
-    public DateTimeInterface $saleSummaryDate;
+    public DateTimeInterface $salesSummaryDate;
     #[Date(8, '!dmY')]
-    public DateTimeInterface $saleSummaryPaymentDate;
+    public DateTimeInterface $salesSummaryPaymentDate;
     #[Text(20)]
     public string $adjustmentId;
     #[Text(1)]
@@ -39,7 +40,7 @@ final class FinantialAdjustment extends Registry
     #[Text(19)]
     public string $cardNumber;
     #[Text(9)]
-    public string $saleSummaryNumberOriginal;
+    public string $salesSummaryNumberOriginal;
     #[Text(12)]
     public string $acquirerNsu;
     #[Date(8, '!dmY')]
@@ -60,4 +61,116 @@ final class FinantialAdjustment extends Registry
     public string $metadata;
     #[Text(114)]
     public string $_padding;
+
+    //
+
+    public function getRegistryType(): int
+    {
+        return $this->registryType;
+    }
+
+    public function getEstablishmentCode(): string
+    {
+        return $this->establishmentCode;
+    }
+
+    public function getSalesSummaryNumber(): string
+    {
+        return $this->salesSummaryNumber;
+    }
+
+    public function getSalesSummaryDate(): DateTimeInterface
+    {
+        return $this->salesSummaryDate;
+    }
+
+    public function getSalesSummaryPaymentDate(): DateTimeInterface
+    {
+        return $this->salesSummaryPaymentDate;
+    }
+
+    public function getAdjustmentId(): string
+    {
+        return $this->adjustmentId;
+    }
+
+    public function getWhiteSpace(): string
+    {
+        return $this->whiteSpace;
+    }
+
+    public function getAdjustmentSignal(): string
+    {
+        return $this->adjustmentSignal;
+    }
+
+    public function getAdjustmentAmount(): string
+    {
+        return $this->adjustmentAmount;
+    }
+
+    public function getAdjustmentReasonCode(): string
+    {
+        return $this->adjustmentReasonCode;
+    }
+
+    public function getLetterDate(): DateTimeInterface
+    {
+        return $this->letterDate;
+    }
+
+    public function getCardNumber(): string
+    {
+        return $this->cardNumber;
+    }
+
+    public function getSalesSummaryNumberOriginal(): string
+    {
+        return $this->salesSummaryNumberOriginal;
+    }
+
+    public function getAcquirerNsu(): string
+    {
+        return $this->acquirerNsu;
+    }
+
+    public function getTransactionDateOriginal(): DateTimeInterface
+    {
+        return $this->transactionDateOriginal;
+    }
+
+    public function getPaymentTypeIndicator(): string
+    {
+        return $this->paymentTypeIndicator;
+    }
+
+    public function getTerminalCodeOriginal(): string
+    {
+        return $this->terminalCodeOriginal;
+    }
+
+    public function getPaymentDateOriginal(): DateTimeInterface
+    {
+        return $this->paymentDateOriginal;
+    }
+
+    public function getCurrencyCode(): int
+    {
+        return $this->currencyCode;
+    }
+
+    public function getSaleComissionAmount(): string
+    {
+        return $this->saleComissionAmount;
+    }
+
+    public function getMetadataContentType(): string
+    {
+        return $this->metadataContentType;
+    }
+
+    public function getMetadata(): string
+    {
+        return $this->metadata;
+    }
 }
