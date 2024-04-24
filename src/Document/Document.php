@@ -133,10 +133,10 @@ final class Document
     /**
      * Opens a new document from a resource
      *
-     * @param integer $resource
+     * @param mixed $resource
      * @return self
      */
-    public static function openFromResource(int $resource): self
+    public static function openFromResource($resource): self
     {
         return new self(Stream::create($resource));
     }
