@@ -94,6 +94,16 @@ final class Document
     }
 
     /**
+     * Returns the current line offset
+     *
+     * @return integer
+     */
+    public function getLineNumber(): int
+    {
+        return $this->parser->getLineNumber();
+    }
+
+    /**
      * Returns the next registry from the document cursor.
      * 
      * @return Registry|null
