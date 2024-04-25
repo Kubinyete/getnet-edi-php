@@ -32,6 +32,7 @@ final class Parser extends LineParser
                 '5' => FinantialSummary::from($buffer),
                 '6' => FinantialDetail::from($buffer),
                 '9' => Trailer::from($buffer),
+                ''  => null, // Last empty line before EOF
                 default => $context->raise("Unexpected registry type '$type', panic!")
             };
         } catch (FieldException $e) {
