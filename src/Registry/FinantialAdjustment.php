@@ -50,7 +50,7 @@ final class FinantialAdjustment extends Registry implements FinantialAdjustmentI
     #[Text(8)]
     public string $terminalCodeOriginal;
     #[Date(8, '!dmY')]
-    public DateTimeInterface $paymentDateOriginal;
+    public ?DateTimeInterface $paymentDateOriginal;
     #[Number(3)]
     public int $currencyCode;
     #[Numeric(12)]

@@ -23,7 +23,7 @@ interface FinantialAdjustmentInterface
     function getTransactionDateOriginal(): DateTimeInterface;
     function getPaymentTypeIndicator(): string;
     function getTerminalCodeOriginal(): string;
-    function getPaymentDateOriginal(): DateTimeInterface;
+    function getPaymentDateOriginal(): ?DateTimeInterface;
     function getCurrencyCode(): int;
     function getSaleComissionAmount(): string;
     function getMetadataContentType(): string;
