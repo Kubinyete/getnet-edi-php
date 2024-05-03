@@ -3,6 +3,7 @@
 namespace Kubinyete\Edi\Getnet\Registry\Contract;
 
 use DateTimeInterface;
+use Kubinyete\Edi\Getnet\Registry\Registry;
 
 interface TransactionalAnalyticInterface
 {
@@ -29,8 +30,9 @@ interface TransactionalAnalyticInterface
     function getTransactionAdjustmentSignal(): string;
     function getDigitalWallet(): string;
     function getSaleComissionAmount(): string;
-    function getMetadataContentType(): string;
-    function getMetadata(): string;
+    // function getMetadataContentType(): string;
+    // function getMetadata(): string;
+    function getMetadata(): ?TransactionalAnalyticMetadataInterface;
     function getMetadata2ContentType(): string;
     function getMetadata2(): string;
 }

@@ -8,7 +8,15 @@ use Kubinyete\Edi\Registry\Field\Text;
 use Kubinyete\Edi\Registry\Field\Field;
 use Kubinyete\Edi\Registry\Field\Number;
 use Kubinyete\Edi\Registry\Field\Numeric;
+use Kubinyete\Edi\Registry\Field\Aggregate;
 use Kubinyete\Edi\Getnet\Registry\Contract\TransactionalAnalyticInterface;
+use Kubinyete\Edi\Getnet\Registry\Aggregate\TransactionalAnalyticMetadataAirlines;
+use Kubinyete\Edi\Getnet\Registry\Aggregate\TransactionalAnalyticMetadataIdempKey;
+use Kubinyete\Edi\Getnet\Registry\Contract\TransactionalAnalyticMetadataInterface;
+use Kubinyete\Edi\Getnet\Registry\Aggregate\TransactionalAnalyticMetadataEcommerce;
+use Kubinyete\Edi\Getnet\Registry\Aggregate\TransactionalAnalyticMetadataRecurring;
+use Kubinyete\Edi\Getnet\Registry\Aggregate\TransactionalAnalyticMetadataRecurringTid;
+use Kubinyete\Edi\Getnet\Registry\Aggregate\TransactionalAnalyticMetadataSoftdescriptor;
 
 /**
  * REGISTRO TIPO 2 – DETALHE DO CV
@@ -65,10 +73,15 @@ final class TransactionalAnalytic extends Registry implements TransactionalAnaly
     public string $digitalWallet;
     #[Numeric(12)]
     public string $saleComissionAmount;
-    #[Text(2)]
-    public string $metadataContentType;
-    #[Field(118)]
-    public string $metadata;
+    #[Aggregate(120, [
+        TransactionalAnalyticMetadataRecurring::class,
+        TransactionalAnalyticMetadataEcommerce::class,
+        TransactionalAnalyticMetadataRecurringTid::class,
+        TransactionalAnalyticMetadataSoftdescriptor::class,
+        TransactionalAnalyticMetadataIdempKey::class,
+        TransactionalAnalyticMetadataAirlines::class,
+    ])]
+    public ?TransactionalAnalyticMetadataInterface $metadata;
     #[Text(2)]
     public string $metadata2ContentType;
     #[Field(50)]
@@ -193,12 +206,7 @@ final class TransactionalAnalytic extends Registry implements TransactionalAnaly
         return $this->saleComissionAmount;
     }
 
-    function getMetadataContentType(): string
-    {
-        return $this->metadataContentType;
-    }
-
-    function getMetadata(): string
+    function getMetadata(): ?TransactionalAnalyticMetadataInterface
     {
         return $this->metadata;
     }
